@@ -46,9 +46,9 @@ $(document).ready(function () {
             '<div  data-index="' + index + '" class="w-100 flex-grow-1 showDetail">' +
             '<p>' + myNote.note.content + '</p>' +
             '</div>' +
-            '<div>' +
-            '<span>' + myNote.meta.createdAt + '</span> ' +
-            ' <div class="btn-group">' +
+            '<div class="w-100 d-flex align-items-center">' +
+            '<span>' + ((myNote.meta.updatedAt == "") ? formatDate(myNote.meta.createdAt) : formatDate(myNote.meta.updatedAt)) + '</span> ' +
+            ' <div class="btn-group ms-auto">' +
             '<button type="button" class="rounded btn " data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
             '<i class="fa-solid fa-ellipsis"></i>' +
             '</button>' +
@@ -116,6 +116,14 @@ $(document).ready(function () {
         for (let index = 0; index < myNotes.length; index++) {
             $('.notesListScreen').append(singleNoteCard(myNotes[index], index))
         }
+    }
+    function formatDate(date) {
+
+        //date is string
+        var options = { weekday: 'long', year: 'numeric', hour: "numeric", minute: "numeric", };
+
+        date = new Date(date);
+        return date.toLocaleString("en-US", options);
     }
 
     function addNote(note) {
