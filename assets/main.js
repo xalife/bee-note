@@ -3,13 +3,18 @@ $(document).ready(function () {
     initScreen();
 
     function initScreen() {
-        if (readNotes) {
+        console.log(readNotes());
+        if (readNotes()) {
             $('.emptyNoteScreen').hide();
-            $('.notesListScreen').show();
+            $('.notesListScreen').css({
+                "display": "flex"
+            });
             renderNotes();
         }
         else {
-            $('.emptyNoteScreen').show();
+            $('.emptyNoteScreen').css({
+                "display": "flex"
+            });
             $('.notesListScreen').hide();
 
 
@@ -47,6 +52,33 @@ $(document).ready(function () {
 
     });
 
+    $('.updateNote').on('click', function () {
+        $('#updateNoteForm').submit();
+    });
+
+    $(document).on('click', '.editNote', function () {
+        let noteIndex = $(this).data('index');
+
+
+        var myNotes = readNotes();
+
+        let note = myNotes[noteIndex];
+
+        $("#editNoteModal").find("input[name='title']").val(note.note.title);
+        $("#editNoteModal").find("input[name='subtitle']").val(note.note.subtitle);
+        $("#editNoteModal").find("input[name='index']").val(noteIndex);
+        $("#editNoteModal").find("textarea[name='content']").val(note.note.content);
+        $("#editNoteModal").modal("show");
+
+
+
+    });
+
+    function readSingleNote(index) {
+        let myNotes = readNotes();
+
+        return myNotes[index];
+    }
 
     function renderNotes() {
 
@@ -74,6 +106,7 @@ $(document).ready(function () {
         }
         myNotes.push(note);
         writeNotes(myNotes);
+
 
     }
     function removeNote(index) {
@@ -131,6 +164,32 @@ $(document).ready(function () {
         addNote(myNote);
         renderNotes();
         $('#addNewNoteModal').modal("hide");
+
+        //location.reload();
+
+
+    });
+
+
+
+    $('#updateNoteForm').on('submit', function (event) {
+        //THIS PREVENT THE FORM TO SUBMIT ITSELF
+        event.preventDefault();
+
+        let formData = new FormData(this);
+        let index = formData.get("index");
+
+
+        var myNotes = readNotes();
+        myNotes[index].note.title = formData.get("title");
+        myNotes[index].note.subtitle = formData.get("subtitle");
+        myNotes[index].note.content = formData.get("content");
+        myNotes[index].meta.updatedAt = new Date();
+
+        writeNotes(myNotes);
+
+        $('#editNoteModal').modal("hide");
+        renderNotes();
 
         //location.reload();
 
