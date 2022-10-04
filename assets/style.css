@@ -30,4 +30,31 @@ body{
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    
+   
+}
+.my-note-cardafter{
+
+    opacity: 0;
+
+    transition: all .3s ease-in;
+   
+}
+.my-note-card:hover:after{
+    content: "\f06e";
+    font-family: "FONTAWESOME";
+    color: #FFF;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inset: 0;
+    font-size: 21px;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.488);
+    opacity: 1;
+   
 }
