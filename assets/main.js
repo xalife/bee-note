@@ -21,12 +21,29 @@ $(document).ready(function () {
         }
     }
 
+
+    $(document).on('click', '.showDetail', function (event) {
+
+
+        let noteIndex = $(this).data('index');
+
+        var myNotes = readNotes();
+
+        let note = myNotes[noteIndex];
+
+        $("#readOnlyModal").find("input[name='title']").val(note.note.title);
+        $("#readOnlyModal").find("input[name='subtitle']").val(note.note.subtitle);
+
+        $("#readOnlyModal").find("textarea[name='content']").val(note.note.content);
+
+        $("#readOnlyModal").modal('show');
+    })
     function singleNoteCard(myNote, index) {
         return '<div  class="my-note-card rounded shadow-sm p-3 d-flex flex-column">' +
-            '<div class="w-100">' +
+            '<div data-index="' + index + '" class="w-100 showDetail">' +
             '<h3>' + myNote.note.title + '</h3>' +
             '</div>' +
-            '<div class="w-100 flex-grow-1">' +
+            '<div  data-index="' + index + '" class="w-100 flex-grow-1 showDetail">' +
             '<p>' + myNote.note.content + '</p>' +
             '</div>' +
             '<div>' +
@@ -50,13 +67,16 @@ $(document).ready(function () {
 
         removeNote(noteIndex);
 
+
+
     });
 
     $('.updateNote').on('click', function () {
         $('#updateNoteForm').submit();
     });
 
-    $(document).on('click', '.editNote', function () {
+    $(document).on('click', '.editNote', function (event) {
+
         let noteIndex = $(this).data('index');
 
 
@@ -106,6 +126,13 @@ $(document).ready(function () {
         }
         myNotes.push(note);
         writeNotes(myNotes);
+        if (myNotes.length == 1) {
+            $('.notesListScreen').css({
+                "display": "flex"
+            });
+            $('.emptyNoteScreen').hide();
+        }
+
 
 
     }
@@ -113,19 +140,26 @@ $(document).ready(function () {
         //THIS METHOD ADD A NEW NOTE TO THE OBJECT
         let myNotes = readNotes();
         if (!myNotes) {
-            renderNotes();
+            $('.emptyNoteScreen').css({
+                "display": "flex"
+            });
+            $('.notesListScreen').hide();
             return;
         }
         if (myNotes.length == 1) {
             localStorage.clear();
-            renderNotes();
+            $('.emptyNoteScreen').css({
+                "display": "flex"
+            });
+            $('.notesListScreen').hide();
             return;
         }
         myNotes.splice(index, 1);
+
         writeNotes(myNotes);
 
-        console.log(myNotes);
         renderNotes();
+
 
     }
 

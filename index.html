@@ -40,22 +40,22 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="addNewNoteModalLabel">Add/Edit Note</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form id="addNoteForm" action="" method="POST">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Title</label>
-                            <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <label for="TitleOfNotes">Title</label>
+                            <input type="text" name="title" class="form-control" id="TitleOfNotes" aria-describedby="titleofnotes" placeholder="Enter Title">
                         </div>
                         <div class="form-group my-4">
-                            <label for="exampleInputPassword1">Subtitle</label>
-                            <input type="text" name="subtitle" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <label for="SubtitleOfNotes">Subtitle</label>
+                            <input type="text" name="subtitle" class="form-control" id="SubtitleOfNotes" placeholder="Enter Subtitle">
                         </div>
                         <div>
-                            <label for="exampleInputPassword1">Content</label>
+                            <label for="ContentOfNotes">Content</label>
                             <textarea name="content" class="w-100 form-control" rows="5"></textarea>
                         </div>
                     </form>
@@ -71,8 +71,8 @@
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addNewNoteModalLabel">Add/Edit Note</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="updateNewNoteModalLabel">Add/Edit Note</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -80,15 +80,15 @@
                     <form id="updateNoteForm">
                         <input type="hidden" name="index">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Title</label>
-                            <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <label for="titleOfNotes">Title</label>
+                            <input type="text" name="title" class="form-control" id="titleOfNotes" aria-describedby="titleOfNotesUpdateInput" placeholder="Enter Title">
                         </div>
                         <div class="form-group my-4">
-                            <label for="exampleInputPassword1">Subtitle</label>
-                            <input type="text" name="subtitle" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <label for="subtitleOfNotes">Subtitle</label>
+                            <input type="text" name="subtitle" class="form-control" id="subtitleOfNotes" placeholder="Subtitle">
                         </div>
                         <div>
-                            <label for="exampleInputPassword1">Content</label>
+                            <label for="contentOfNotes">Content</label>
                             <textarea name="content" class="w-100 form-control" rows="5"></textarea>
                         </div>
                     </form>
@@ -96,6 +96,39 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-danger updateNote"><i class="fa-solid fa-circle-plus"></i> Update Note</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="readOnlyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addNewNoteModalLabel">Add/Edit Note</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="updateNoteForm">
+
+                        <div class="form-group">
+                            <label for="TitleOfNotes">Title</label>
+                            <input type="text" name="title" class="form-control" id="TitleOfNotes" aria-describedby="emailHelp" placeholder="Enter Title" disabled>
+                        </div>
+                        <div class="form-group my-4">
+                            <label for="subtitleOfNotes">Subtitle</label>
+                            <input type="text" name="subtitle" class="form-control" id="subtitleOfNotes" placeholder="Subtitle" disabled>
+                        </div>
+                        <div>
+                            <label for="ContentOfNotes">Content</label>
+                            <textarea name="content" class="w-100 form-control" rows="5" disabled></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
                 </div>
             </div>
         </div>
