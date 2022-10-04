@@ -22,3 +22,11 @@ body{
     justify-content: center;
     
 }
+.my-note-card{
+    width: 300px;
+    height: 300px;
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

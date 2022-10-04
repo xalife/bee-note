@@ -12,11 +12,11 @@
 </head>
 
 <body>
-
+    <div class="w-100 text-start ms-3 mt-3">
+        <h1>Notes</h1>
+    </div>
     <div class="d-none my_con d-flex flex-column align-items-center justify-content-center emptyNoteScreen">
-        <div class="w-100 text-start ">
-            <h1>Notes</h1>
-        </div>
+
         <div class="w-100 h-100 bg-white p-3">
 
             <button class="btn w-100 h-100 addNewNoteButton rounded" data-bs-toggle="modal" data-bs-target="#addNewNoteModal">
@@ -25,9 +25,13 @@
             </button>
         </div>
     </div>
-    <div class="my_con d-flex flex-column align-items-center justify-content-center notesListScreen">
-        showing notes
-
+    <div class="my_con d-flex gap-3 flex-wrap notesListScreen">
+        <div class="my-note-card rounded shadow-sm p-3 buttonCard">
+            <button class="btn w-100 h-100 addNewNoteButton rounded" data-bs-toggle="modal" data-bs-target="#addNewNoteModal">
+                <i class="fa-solid fa-circle-plus fs-3 me-2"></i>
+                <span class="fs-3">Add New Note</span>
+            </button>
+        </div>
     </div>
 
 
